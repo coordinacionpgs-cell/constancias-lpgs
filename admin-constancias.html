@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Panel de Administración · Constancias LPGS</title>
+  <link rel="icon" type="image/png" href="./favicon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
@@ -37,15 +38,24 @@
       display: flex; align-items: center; justify-content: space-between;
       border-bottom: 3px solid var(--gold);
     }
-    .hd-left { display: flex; align-items: center; gap: 14px; }
-    .hd-seal {
-      width: 42px; height: 42px;
-      border: 2px solid rgba(201,153,58,.8); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    .hd-left { display: flex; align-items: center; gap: 0; }
+    .hd-logo-uam {
+      height: 44px; width: auto;
+      filter: brightness(0) invert(1);
+      opacity: .92; flex-shrink: 0;
     }
-    .hd-seal-txt { font-family: var(--font-d); font-size: 8px; font-weight: 700; letter-spacing: .04em; text-align: center; color: rgba(201,153,58,.95); line-height: 1.2; }
-    .hd h1 { font-family: var(--font-d); font-size: .97rem; font-weight: 700; }
-    .hd p  { font-size: .7rem; color: rgba(255,255,255,.6); margin-top: 1px; }
+    .hd-divider {
+      width: 1px; height: 38px;
+      background: rgba(201,153,58,.45);
+      margin: 0 16px; flex-shrink: 0;
+    }
+    .hd-logo-lpgs {
+      height: 48px; width: auto;
+      flex-shrink: 0; border-radius: 3px;
+      box-shadow: 0 2px 6px rgba(0,0,0,.3);
+    }
+    .hd h1 { font-family: var(--font-d); font-size: .92rem; font-weight: 700; }
+    .hd p  { font-size: .68rem; color: rgba(255,255,255,.6); margin-top: 1px; }
     .hd-user { font-size: .78rem; color: rgba(255,255,255,.75); display: flex; align-items: center; gap: 8px; }
     .logout-btn {
       padding: 5px 12px; background: rgba(255,255,255,.12);
@@ -357,12 +367,14 @@
 <!-- ══ HEADER ══ -->
 <header class="hd">
   <div class="hd-left">
-    <div class="hd-seal"><span class="hd-seal-txt">UAM<br>XOCH</span></div>
+    <img src="./Logo_uam_izquierda.png" alt="UAM Xochimilco" class="hd-logo-uam" />
+    <div class="hd-divider"></div>
     <div>
       <h1>Panel de Administración · Constancias</h1>
       <p>Coordinación LPGS · UAM Xochimilco</p>
     </div>
   </div>
+  <img src="./logo_pgs_derecha__3_.png" alt="LPGS" class="hd-logo-lpgs" />
   <div class="hd-user">
     <span>Coordinación</span>
     <button class="logout-btn" onclick="logout()">Cerrar sesión</button>
@@ -526,7 +538,7 @@
 // ════════════════════════════════════════════════════════
 //  CONFIGURACIÓN — completar antes de usar
 // ════════════════════════════════════════════════════════
-const API_URL = 'https://script.google.com/macros/s/AKfycbxg0l30xjr99hGrFwc5tu9RF0VBXLgmUbNjZ7oZgQrynkesRrYYK2e2avy4vyldEBTTFw/exec';
+const API_URL = 'TU_URL_DE_APPS_SCRIPT_AQUI';
 // Ejemplo:
 // const API_URL = 'https://script.google.com/macros/s/AKfycbXXXXXXXX/exec';
 // ════════════════════════════════════════════════════════
@@ -539,8 +551,8 @@ const IS_DEMO = API_URL === 'TU_URL_DE_APPS_SCRIPT_AQUI';
 const DEMO_TOKEN = 'demo123';
 let demoRecords = [
   { serial:'LPGS-202506-DEMO01-MLH', nombre:'María López Hernández', evento:'Coloquio de Política Pública 2025', unidad:'UAM Xochimilco', fechaEvento:'2025-06-10', rol:'Ponente', fechaEmision:'2025-06-11', estado:'Activo' },
-  { serial:'LPGS-202506-DEMO02-MLH', nombre:'Carlos Ramírez Torres', evento:'Coloquio de Política Pública 2025', unidad:'UAM Xochimilco', fechaEvento:'2025-06-10', rol:'Moderador', fechaEmision:'2025-06-11', estado:'Activo' },
-  { serial:'LPGS-202505-QRTX45-MLH', nombre:'Ana Gutiérrez Morales', evento:'Seminario de Análisis Político', unidad:'UAM Xochimilco', fechaEvento:'2025-05-22', rol:'Participante', fechaEmision:'2025-05-23', estado:'Activo' },
+  { serial:'LPGS-202506-DEMO02-CRT', nombre:'Carlos Ramírez Torres', evento:'Coloquio de Política Pública 2025', unidad:'UAM Xochimilco', fechaEvento:'2025-06-10', rol:'Moderador', fechaEmision:'2025-06-11', estado:'Activo' },
+  { serial:'LPGS-202505-QRTX45', nombre:'Ana Gutiérrez Morales', evento:'Seminario de Análisis Político', unidad:'UAM Xochimilco', fechaEvento:'2025-05-22', rol:'Participante', fechaEmision:'2025-05-23', estado:'Activo' },
 ];
 
 // ── AUTH ──
