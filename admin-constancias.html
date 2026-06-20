@@ -313,6 +313,7 @@
     .b-moderador   { background: #F3E5F5; color: #4A148C; }
     .b-participante{ background: #E8F5E9; color: #1B5E20; }
     .b-asistente   { background: #FFF8E1; color: #E65100; }
+    .b-organizador { background: #E0F2F1; color: #00695C; }
     .tbl-empty { text-align: center; padding: 32px; color: var(--muted); font-size: .9rem; }
     .tbl-loading { text-align: center; padding: 32px; color: var(--muted); }
 
@@ -402,6 +403,10 @@
     <div class="stat-val" id="statPart">—</div>
     <div class="stat-lbl">Participantes</div>
   </div>
+  <div class="stat-card">
+    <div class="stat-val" id="statOrg">—</div>
+    <div class="stat-lbl">Organizadores</div>
+  </div>
 </div>
 
 <!-- ══ TABS ══ -->
@@ -441,7 +446,7 @@
           <option value="Moderador">Moderador</option>
           <option value="Participante">Participante</option>
           <option value="Asistente">Asistente</option>
-          <option value="Organizador">Asistente</option>
+          <option value="Organizador">Organizador</option>
         </select>
       </div>
       <div class="fg">
@@ -658,6 +663,8 @@ async function cargarEstadisticas() {
     document.getElementById('statPonentes').textContent = d.porRol?.Ponente ?? 0;
     document.getElementById('statMod').textContent = d.porRol?.Moderador ?? 0;
     document.getElementById('statPart').textContent = d.porRol?.Participante ?? 0;
+    document.getElementById('statOrg').textContent = d.porRol?.Organizador ?? 0;
+    
   } catch { /* silencioso */ }
 }
 
@@ -708,7 +715,7 @@ function limpiarSingle() {
 let rowCounter = 0;
 function addBulkRow() {
   const id = ++rowCounter;
-  const roles = ['Ponente','Moderador','Participante','Asistente'];
+  const roles = ['Ponente','Moderador','Participante','Asistente' ,'Organizador'];
   const opts = roles.map(r => `<option value="${r}">${r}</option>`).join('');
   const div = document.createElement('div');
   div.className = 'bulk-row';
@@ -866,7 +873,7 @@ function fDate(s) {
   } catch { return s; }
 }
 function rolClass(r) {
-  const m = { Ponente:'b-ponente', Moderador:'b-moderador', Participante:'b-participante', Asistente:'b-asistente' };
+  const m = { Ponente:'b-ponente', Moderador:'b-moderador', Participante:'b-participante', Asistente:'b-asistente', Organizador:'b-organizador' };
   return m[r] || 'b-participante';
 }
 </script>
