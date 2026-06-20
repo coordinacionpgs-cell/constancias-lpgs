@@ -404,6 +404,10 @@
     <div class="stat-lbl">Participantes</div>
   </div>
   <div class="stat-card">
+    <div class="stat-val" id="statAsis">—</div>
+    <div class="stat-lbl">Asistentes</div>
+  </div>
+  <div class="stat-card">
     <div class="stat-val" id="statOrg">—</div>
     <div class="stat-lbl">Organizadores</div>
   </div>
@@ -663,6 +667,7 @@ async function cargarEstadisticas() {
     document.getElementById('statPonentes').textContent = d.porRol?.Ponente ?? 0;
     document.getElementById('statMod').textContent = d.porRol?.Moderador ?? 0;
     document.getElementById('statPart').textContent = d.porRol?.Participante ?? 0;
+    document.getElementById('statAsis').textContent = d.porRol?.Asistente ?? 0;
     document.getElementById('statOrg').textContent = d.porRol?.Organizador ?? 0;
     
   } catch { /* silencioso */ }
